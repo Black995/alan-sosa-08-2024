@@ -72,12 +72,13 @@
 /**
  * librerias y modelos
  */
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from "axios"
 import { URL_POKE_API } from "../../config/config"
 import { usePokemonStore } from '../store/PokemonStore';
 import { Pokemon, PokemonDetail } from '../models/Pokemon';
 import { useRoute, useRouter } from 'vue-router'
+import { playAudio } from '../helpers';
 
 
 // store de Pinia
@@ -106,6 +107,7 @@ let pokemon = ref<PokemonDetail>({
 let evolutions = ref<Pokemon[]>([])
 let description = ref('')
 
+
 /**
  * funciones
  */
@@ -121,14 +123,7 @@ onMounted(() => {
 })
 
 
-function playAudio(audioFile:string) {
-  const audio = new Audio(audioFile);
-  audio.play();
-}
-
-
 async function getDescription() {
-
   axios
     .get(`${URL_POKE_API}/pokemon-species/${pokeId.value}`)
     .then((res:any) => {
@@ -144,7 +139,6 @@ async function getDescription() {
     })
 
 }
-
 
 
 async function getPokemonImages() {
@@ -202,5 +196,5 @@ function back() {
 </script>
 
 <style scoped>
-/* Add any custom styles here */
+
 </style>

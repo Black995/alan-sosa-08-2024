@@ -6,7 +6,7 @@ import TeamDetail from '../components/TeamDetail.vue';
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', name: 'Home', component: Home },
-  { path: '/team', name: 'Team', component: Team },
+  { path: '/team/', name: 'Team', component: Team },
   { path: '/team/:id', name: 'TeamDetail', component: TeamDetail, props: true  }
 ]
 

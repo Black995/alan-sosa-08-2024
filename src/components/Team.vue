@@ -2,7 +2,10 @@
   <div class="container mx-auto py-8 relative">
     <h5 class="text-3xl font-bold mb-4">Tu equipo Pokémon</h5>
     <div class="bg-white p-6 rounded-lg shadow">
-      <table class="w-full table-fixed">
+      <div v-if="team.length == 0" class="w-full w-1/6 flex items-center">
+        <h5>No tienes Pokémon seleccionados</h5>
+      </div>
+      <table v-else class="w-full table-fixed">
         <thead>
           <tr class="bg-violet-200 text-slate-700 font-bold">
             <th class="w-1/6 px-4 py-2">Imagen</th>
@@ -44,7 +47,7 @@
               </button>
             </td>
             <td class="w-1/6 ">
-              <button
+              <button title="Ver detalle"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded-full"
                 @click="detailPokemon(poke)"
               >
@@ -53,7 +56,7 @@
                 </svg>
               </button>
 
-              <button
+              <button title="Eliminar de mi equipo"
                 class="bg-red-500 hover:bg-red-700 text-white font-bold p-2 rounded-full"
                 @click="deletePokemon(poke.id)"
               >
@@ -79,6 +82,7 @@ import { ref, onMounted } from 'vue'
 import { usePokemonStore } from '../store/PokemonStore'
 import { PokemonDetail } from '../models/Pokemon'
 import { useRouter } from 'vue-router'
+import { playAudio } from '../helpers';
 
 
 // store de Pinia
@@ -104,12 +108,6 @@ onMounted(() => {
 function getPokemons() {
   team.value = []
   team.value = pokemonStore.getSelectedPokemons()
-}
-
-
-function playAudio(audioFile:string) {
-  const audio = new Audio(audioFile);
-  audio.play();
 }
 
 

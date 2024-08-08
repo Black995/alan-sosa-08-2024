@@ -83,7 +83,7 @@ import { ref, onMounted, computed } from 'vue'
 import axios from "axios"
 import { URL_POKE_API } from "../../config/config"
 import { usePokemonStore } from '../store/PokemonStore'
-import { Pokemon } from '../models/Pokemon'
+import { Pokemon, PokemonDetail } from '../models/Pokemon'
 import { useRouter } from 'vue-router'
 
 
@@ -109,7 +109,7 @@ const totalPages = computed(() => Math.ceil(totalPokemons / pokemonsPerPage))
 const offset = computed(() => (currentPage.value - 1) * pokemonsPerPage)
 // variable para bloquear la tabla mientras carga la informacion
 const isLoading = ref(true)
-// variable para habilitar columna de seleccion
+// variable para habilitar columna de seleccion de equipo
 const selectColumn = ref(false)
 
 
@@ -118,6 +118,9 @@ const selectColumn = ref(false)
  */
 onMounted(() => {
   getPokemons()
+  
+  // traer equipo seleccionado, si se tiene
+  getCurrentTeam()
 })
 
 
@@ -129,6 +132,22 @@ const changePage = (page:number) => {
    */
   getPokemons();
 };
+
+
+// Obtener el equipo actual 
+function getCurrentTeam() {
+  const team:PokemonDetail[] = pokemonStore.getSelectedPokemons();
+
+  team.forEach(poke => {
+    let newPoke:Pokemon = {
+      name: poke.name,
+      url: poke.url,
+      pokemon_image: poke.pokemon_image
+    }
+    selectedPokemons.value.push(newPoke)
+  });
+ 
+}
 
 
 async function getPokemons() {
@@ -181,4 +200,5 @@ function assignTeam() {
 
 
 <style scoped>
+
 </style>
