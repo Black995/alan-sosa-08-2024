@@ -4,7 +4,7 @@
     <div class="bg-white p-6 rounded-lg shadow">
       <table class="w-full table-fixed">
         <thead>
-          <tr class="bg-cyan-400 text-slate-700 font-bold">
+          <tr class="bg-violet-200 text-slate-700 font-bold">
             <th class="w-1/6 px-4 py-2">Imagen</th>
             <th class="w-1/6 px-4 py-2">Nombre</th>
             <th class="w-1/6 px-4 py-2">Tipos</th>
@@ -15,8 +15,8 @@
         </thead>
         <tbody>
           <tr v-for="poke in team" :key="poke.id" class="border-b hover:bg-gray-100">
-            <td class="w-full flex items-center justify-center">
-              <img :src="poke.pokemon_image" :alt="poke.name" class="w-16 h-16 rounded-full" />
+            <td class="w-full w-1/6 flex items-center justify-center">
+              <img :src="poke.pokemon_image" :alt="poke.name" class="w-full rounded-t-lg sm:rounded-t-none sm:rounded-l-lg" />
             </td>
             <td class="w-1/6">
               <b>
@@ -29,8 +29,8 @@
               </span>
             </td>
             <td class="w-1/6">
-              <p v-for="stat in poke.stats">
-                {{ stat.stat.name }}: {{ stat.base_stat }}
+              <p v-for="stat in poke.stats" class="text-left text-sm">
+                <b>{{ stat.stat.name }}:</b> {{ stat.base_stat }}
               </p>
             </td>
             <td class="w-1/6">

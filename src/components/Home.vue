@@ -8,7 +8,7 @@
           <button
             v-for="page in totalPages"
             :key="page"
-            :class="{ 'bg-blue-500 text-white': currentPage === page, 'bg-gray-200 text-gray-700': currentPage !== page }"
+            :class="{ 'bg-purple-500 text-white': currentPage === page, 'bg-gray-200 text-gray-700': currentPage !== page }"
             class="px-2 py-1 text-sm rounded-md cursor-pointer"
             @click="changePage(page)"
           >
@@ -35,7 +35,7 @@
 
       <table class="w-full table-fixed">
         <thead>
-          <tr class="bg-cyan-400 text-slate-700 font-bold">
+          <tr class="bg-violet-200 text-slate-700 font-bold">
             <th class="px-4 py-2">Imagen</th>
             <th class="px-4 py-2">Nombre</th>
             <th v-if="selectColumn" class="px-4 py-2">Seleccionar</th>
