@@ -41,10 +41,10 @@
               </button>
             </p>
             <p class="text-gray-700 text-base justify-content-left">
-              <b>Altura: </b>{{ pokemon.height }} kg
+              <b>Altura: </b>{{ (pokemon.height) / 10 }} m
             </p>
             <p class="text-gray-700 text-base justify-content-left">
-              <b>Peso: </b>{{ pokemon.weight }} cm
+              <b>Peso: </b>{{ (pokemon.weight) / 10 }} kg
             </p>
             <p class="text-gray-700 text-base justify-content-left">
               <b>Descripcion: </b>{{ description }}
