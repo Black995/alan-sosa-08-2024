@@ -2,7 +2,7 @@
 
 ### Pasos a seguir para ejecutar el proyecto
 
-- Una vez clonado el repositorio y estando en la carpeta raíz, ejecutar **npm i** , con el fin de poder instalar todas las librerías necesarias para el proyecto.
+- Una vez clonado el repositorio y estando en la carpeta raíz, ejecutar **npm i** con el fin de poder instalar todas las librerías necesarias para el proyecto.
 - Finalmente, ejecutar el siguiente comando para correr el servidor:  **npm run dev**
 
 
